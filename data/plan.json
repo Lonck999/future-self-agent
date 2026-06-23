@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "status": "inactive",
+  "profile_ref": "data/profile.json",
+  "cycle": {
+    "start_date": "2026-06-23",
+    "end_date": "2026-12-23",
+    "length_months": 6
+  },
+  "priority_skills": [
+    "Async Rust（tokio）",
+    "Rust Web 框架（Axum）",
+    "全端系統架構設計能力",
+    "Rust 所有權/借用機制",
+    "Vue 3 Composition API",
+    "資料庫整合（sqlx）",
+    "REST API 設計",
+    "Pinia 狀態管理",
+    "Vue Router",
+    "Nuxt（SSR）",
+    "身份驗證與安全性（JWT/Session）",
+    "部署/DevOps（Docker、CI/CD）",
+    "前端元件架構設計模式",
+    "TypeScript（搭配 Vue）",
+    "Rust 錯誤處理模式",
+    "前端測試（Vitest）",
+    "Rust 測試",
+    "開源貢獻實務",
+    "Code Review 與技術帶領",
+    "建構工具（Vite）"
+  ],
+  "calendar": {
+    "calendar_id": "a0f91305d642a598c5a345624eea531d03f2bdf709a8a9adccfd57a3963993cd@group.calendar.google.com",
+    "calendar_name": "future-self"
+  },
+  "history": []
+}

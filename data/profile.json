@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "created_at": "2026-06-23",
+  "updated_at": "2026-06-23",
+  "target_identity": {
+    "raw_description": "我想成為一位大師級的全端工程師，前端使用 Vue 系列，後端使用 Rust",
+    "domain": "全端工程師（前端 Vue 系列、後端 Rust）",
+    "timeframe_months": 6,
+    "success_criteria": "能獨立架構並交付完整全端產品（前後端整合、部署上線）；在團隊中被視為技術主導，能做技術決策與帶領他人；有公開作品或開源貢獻被認可"
+  },
+  "current_state": {
+    "sources_consulted": [],
+    "summary": "Vue 與 Rust 皆仍在看教學階段，尚無實際專案開發經驗，沒有前後端整合或部署上線的經驗。",
+    "skills": [
+      { "skill": "Vue 基礎語法", "level": 1 },
+      { "skill": "Rust 基礎語法", "level": 1 }
+    ]
+  },
+  "ongoing_notes_ref": null,
+  "skill_gaps": [
+    { "skill": "Async Rust（tokio）", "importance": 5, "current_level": 0, "gap_score": 25, "priority_rank": 1 },
+    { "skill": "Rust Web 框架（Axum）", "importance": 5, "current_level": 0, "gap_score": 25, "priority_rank": 2 },
+    { "skill": "全端系統架構設計能力", "importance": 5, "current_level": 0, "gap_score": 25, "priority_rank": 3 },
+    { "skill": "Rust 所有權/借用機制", "importance": 5, "current_level": 1, "gap_score": 20, "priority_rank": 4 },
+    { "skill": "Vue 3 Composition API", "importance": 5, "current_level": 1, "gap_score": 20, "priority_rank": 5 },
+    { "skill": "資料庫整合（sqlx）", "importance": 4, "current_level": 0, "gap_score": 20, "priority_rank": 6 },
+    { "skill": "REST API 設計", "importance": 4, "current_level": 0, "gap_score": 20, "priority_rank": 7 },
+    { "skill": "Pinia 狀態管理", "importance": 4, "current_level": 0, "gap_score": 20, "priority_rank": 8 },
+    { "skill": "Vue Router", "importance": 4, "current_level": 0, "gap_score": 20, "priority_rank": 9 },
+    { "skill": "Nuxt（SSR）", "importance": 4, "current_level": 0, "gap_score": 20, "priority_rank": 10 },
+    { "skill": "身份驗證與安全性（JWT/Session）", "importance": 4, "current_level": 0, "gap_score": 20, "priority_rank": 11 },
+    { "skill": "部署/DevOps（Docker、CI/CD）", "importance": 4, "current_level": 0, "gap_score": 20, "priority_rank": 12 },
+    { "skill": "前端元件架構設計模式", "importance": 4, "current_level": 0, "gap_score": 20, "priority_rank": 13 },
+    { "skill": "TypeScript（搭配 Vue）", "importance": 4, "current_level": 1, "gap_score": 16, "priority_rank": 14 },
+    { "skill": "Rust 錯誤處理模式", "importance": 3, "current_level": 0, "gap_score": 15, "priority_rank": 15 },
+    { "skill": "前端測試（Vitest）", "importance": 3, "current_level": 0, "gap_score": 15, "priority_rank": 16 },
+    { "skill": "Rust 測試", "importance": 3, "current_level": 0, "gap_score": 15, "priority_rank": 17 },
+    { "skill": "開源貢獻實務", "importance": 3, "current_level": 0, "gap_score": 15, "priority_rank": 18 },
+    { "skill": "Code Review 與技術帶領", "importance": 3, "current_level": 0, "gap_score": 15, "priority_rank": 19 },
+    { "skill": "建構工具（Vite）", "importance": 3, "current_level": 0, "gap_score": 15, "priority_rank": 20 }
+  ]
+}
