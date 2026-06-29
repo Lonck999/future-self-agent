@@ -19,8 +19,9 @@
   - `skill`：技能名稱
   - `importance` (1-5)：對達成目標的關鍵程度
   - `current_level` (0-5)：目前水平
-  - `gap_score`：`importance * (5 - current_level)`，分數越高越優先
-  - `priority_rank`：依 `gap_score` 排序後的順位
+  - `gap_score`：`importance * (5 - current_level)`，分數越高越優先（僅供參考，非最終排序依據）
+  - `priority_rank`：最終學習順位。優先依 `gap_score`，但當技能間有**前置依賴關係**時（例如沒寫過基礎語法就不該排非同步框架），依賴關係優先於分數，基礎/前置技能排到依賴它的技能之前
+  - `prerequisite_for`（可選）：此技能是哪些技能的前置條件，標記出依賴鏈，避免任務生成時跳級
 
 ## plan.json
 目前生效的規劃週期與行事曆對應資訊，由初始訪談 Skill 建立，每日/每月排程 Agent 讀寫。
