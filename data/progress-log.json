@@ -6,8 +6,8 @@
       "tasks": [
         {
           "id": "2026-06-29-1",
-          "title": "[Async Rust] tokio 併發抓取練習",
-          "description": "完成 tokio 官方教學 Async 基礎章節，並用 tokio::spawn + reqwest 寫一個併發抓取 3 個不同 URL 的小程式，比較循序與併發耗時差異。",
+          "title": "[Rust 基礎] 安裝環境 + 第一個 cargo 專案",
+          "description": "安裝 Rust（rustup）與確認 cargo 可用，用 `cargo new hello_rust` 建立第一個專案，修改 main.rs 印出自己的名字，執行 `cargo run` 確認成功。不求理解所有東西，先讓環境跑起來。",
           "duration_minutes": 60,
           "event_id": "taiitr3t4tte352cm78t7sevl4",
           "status": "pending",
@@ -16,8 +16,8 @@
         },
         {
           "id": "2026-06-29-2",
-          "title": "[Axum] 建立最小 Web API",
-          "description": "用 Axum 建立一個含 GET /health 與 POST /echo 兩個路由的最小 Web API，跑起來後用 curl 實際測試兩個端點的回應。",
+          "title": "[Rust 基礎] 變數、型別與函式練習",
+          "description": "在 hello_rust 專案裡練習：宣告整數/浮點數/字串變數、寫一個會回傳值的函式（例如算兩數相加），用 if/else 寫一個簡單的條件判斷並印出結果。每寫一段就 cargo run 驗證。",
           "duration_minutes": 60,
           "event_id": "cdu69chdl1a2a0t6a0poej7ea8",
           "status": "pending",
@@ -26,8 +26,8 @@
         },
         {
           "id": "2026-06-29-3",
-          "title": "[架構設計] 全端系統架構案例筆記",
-          "description": "找一篇 Rust(Axum)+Vue 全端系統架構案例文章，閱讀後手繪/文字整理出前後端資料流圖（請求→API→資料庫→回應），記錄在筆記中。",
+          "title": "[Vue 基礎] 建立第一個 Vue 專案並顯示資料",
+          "description": "用 `npm create vue@latest` 建立第一個專案，在一個元件裡用 `ref` 宣告一個字串資料並顯示在畫面上，加一個按鈕，點擊後用 `@click` 修改這個資料，觀察畫面即時更新（reactivity 的第一次體感）。",
           "duration_minutes": 45,
           "event_id": "80k4ascavbfq6lqfkt08ob0tms",
           "status": "pending",
