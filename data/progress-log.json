@@ -1,5 +1,41 @@
 {
   "version": 1,
-  "entries": [],
+  "entries": [
+    {
+      "date": "2026-06-29",
+      "tasks": [
+        {
+          "id": "2026-06-29-1",
+          "title": "[Async Rust] tokio 併發抓取練習",
+          "description": "完成 tokio 官方教學 Async 基礎章節，並用 tokio::spawn + reqwest 寫一個併發抓取 3 個不同 URL 的小程式，比較循序與併發耗時差異。",
+          "duration_minutes": 60,
+          "event_id": "taiitr3t4tte352cm78t7sevl4",
+          "status": "pending",
+          "carried_over_from": null,
+          "priority": 1
+        },
+        {
+          "id": "2026-06-29-2",
+          "title": "[Axum] 建立最小 Web API",
+          "description": "用 Axum 建立一個含 GET /health 與 POST /echo 兩個路由的最小 Web API，跑起來後用 curl 實際測試兩個端點的回應。",
+          "duration_minutes": 60,
+          "event_id": "cdu69chdl1a2a0t6a0poej7ea8",
+          "status": "pending",
+          "carried_over_from": null,
+          "priority": 2
+        },
+        {
+          "id": "2026-06-29-3",
+          "title": "[架構設計] 全端系統架構案例筆記",
+          "description": "找一篇 Rust(Axum)+Vue 全端系統架構案例文章，閱讀後手繪/文字整理出前後端資料流圖（請求→API→資料庫→回應），記錄在筆記中。",
+          "duration_minutes": 45,
+          "event_id": "80k4ascavbfq6lqfkt08ob0tms",
+          "status": "pending",
+          "carried_over_from": null,
+          "priority": 3
+        }
+      ]
+    }
+  ],
   "archive": []
 }
