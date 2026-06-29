@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "status": "inactive",
+  "status": "active",
   "profile_ref": "data/profile.json",
   "cycle": {
     "start_date": "2026-06-23",

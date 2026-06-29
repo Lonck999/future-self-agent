@@ -11,7 +11,10 @@
 - `target_identity.success_criteria`：衡量是否達成的標準。
 - `current_state.sources_consulted`：本次現況評估讀取過的資料來源（履歷檔案路徑、筆記檔案路徑、行事曆查詢範圍等）。
 - `current_state.skills`：使用者目前已具備技能與水平的列表。
-- `ongoing_notes_ref`：使用者持續記錄進度的筆記位置（檔案路徑或連結）。每月確認 routine 會讀取這裡的內容判斷進度（決策 5-1），初始訪談時需向使用者確認此欄位。
+- `ongoing_notes_ref`：使用者持續記錄進度的筆記位置。每月確認 routine 會讀取這裡的內容判斷進度（決策 5-1），初始訪談時需向使用者確認此欄位。物件欄位：
+  - `type`：來源類型，例如 `git_repo`（目前唯一已實作的類型）
+  - `url`：可存取的位置（例：git 倉庫 URL）
+  - `scope`：要讀取的範圍說明（例：整個 vault，或特定資料夾/檔名）
 - `skill_gaps[]`：每項缺口技能，欄位：
   - `skill`：技能名稱
   - `importance` (1-5)：對達成目標的關鍵程度

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "created_at": "2026-06-23",
-  "updated_at": "2026-06-23",
+  "updated_at": "2026-06-29",
   "target_identity": {
     "raw_description": "我想成為一位大師級的全端工程師，前端使用 Vue 系列，後端使用 Rust",
     "domain": "全端工程師（前端 Vue 系列、後端 Rust）",
@@ -16,7 +16,11 @@
       { "skill": "Rust 基礎語法", "level": 1 }
     ]
   },
-  "ongoing_notes_ref": null,
+  "ongoing_notes_ref": {
+    "type": "git_repo",
+    "url": "https://github.com/Lonck999/obsidian",
+    "scope": "整個 vault（沒有固定資料夾，每月需掃描全部筆記找相關進展）"
+  },
   "skill_gaps": [
     { "skill": "Async Rust（tokio）", "importance": 5, "current_level": 0, "gap_score": 25, "priority_rank": 1 },
     { "skill": "Rust Web 框架（Axum）", "importance": 5, "current_level": 0, "gap_score": 25, "priority_rank": 2 },
