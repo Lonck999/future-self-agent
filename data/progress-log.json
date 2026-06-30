@@ -30,9 +30,24 @@
           "description": "用 `npm create vue@latest` 建立第一個專案，在一個元件裡用 `ref` 宣告一個字串資料並顯示在畫面上，加一個按鈕，點擊後用 `@click` 修改這個資料，觀察畫面即時更新（reactivity 的第一次體感）。",
           "duration_minutes": 45,
           "event_id": "80k4ascavbfq6lqfkt08ob0tms",
-          "status": "pending",
+          "status": "carried_over",
           "carried_over_from": null,
           "priority": 3
+        }
+      ]
+    },
+    {
+      "date": "2026-06-30",
+      "tasks": [
+        {
+          "id": "2026-06-30-1",
+          "title": "[Vue 基礎] 建立第一個 Vue 專案並顯示資料",
+          "description": "用 `npm create vue@latest` 建立第一個專案，在一個元件裡用 `ref` 宣告一個字串資料並顯示在畫面上，加一個按鈕，點擊後用 `@click` 修改這個資料，觀察畫面即時更新（reactivity 的第一次體感）。",
+          "duration_minutes": 45,
+          "event_id": "o451978e4h09lf79lv8fslpmac",
+          "status": "pending",
+          "carried_over_from": "2026-06-29",
+          "priority": 1
         }
       ]
     }

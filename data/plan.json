@@ -36,7 +36,7 @@
     "skill": "Vue 基礎語法（template/reactivity 基礎）",
     "track": "frontend",
     "started_date": "2026-06-30",
-    "assigned_task_ids": ["2026-06-29-3"],
+    "assigned_task_ids": ["2026-06-30-1"],
     "status": "in_progress",
     "note": "前景（foreground）只有一項技能：區塊式單軌，整條 Vue 技能線（9項）全部學完才開始整條 Rust 技能線（9項），整合型技能（4項）排最後。完成判斷為證據導向：每日規劃需讀 ongoing_notes_ref 筆記，比對 assigned_task_ids 是否都有完成證據，全部找到才推進到 priority_skills 下一項，否則繼續同一技能出下一步，不設時間上限。2026-06-29-1/2026-06-29-2（Rust 基礎任務）是改版前已建立的事項，不計入任何 current_focus/background_queue 追蹤。"
   },
