@@ -20,7 +20,7 @@
   "ongoing_notes_ref": {
     "type": "git_repo",
     "url": "https://github.com/Lonck999/obsidian",
-    "scope": "整個 vault（沒有固定資料夾，每月需掃描全部筆記找相關進展）"
+    "scope": "依技能分資料夾管理（例如 Vue/ 資料夾放 Vue 相關技能進度、Rust/ 資料夾放 Rust 相關技能進度）。每日規劃比對證據時，優先找資料夾名稱與 current_focus.skill／background_queue 技能名稱有關鍵字對應的資料夾（例如技能名稱含「Vue」就找 Vue/ 資料夾）；找不到明確對應資料夾時，才退回掃描整個 vault。每月確認 routine 仍掃描整個 vault 做全面進度檢視。"
   },
   "skill_gaps": [
     { "skill": "Vue 基礎語法（template/reactivity 基礎）", "importance": 5, "current_level": 0, "gap_score": 25, "priority_rank": 1, "track": "frontend", "prerequisite_for": ["Vue 3 Composition API", "Vue Router", "Pinia 狀態管理"] },

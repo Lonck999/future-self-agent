@@ -22,7 +22,7 @@
    - 不重新規劃內容，標題/描述沿用原任務。
 4. **判斷今天是否需要讀筆記**：檢查 `current_focus.assigned_task_ids` 與 `background_queue[].assigned_task_ids` 裡，是否存在任何**「今天以前」就已指派**的任務 ID（用 `progress-log.json.entries[]` 對應的 `date` 判斷，不含今天才新建的任務）。
    - 若**完全沒有**這種任務（例如全新技能剛起步、或唯一已指派的任務就是今天才建立的）→ 代表還沒有東西可供檢查，**跳過第 5、6 步**（不用 clone 筆記），直接跳到第 7 步出今天的前景任務。
-   - 若有 → 讀取 `profile.json.ongoing_notes_ref` 指向的筆記（`git clone --depth 1` 對應 repo，掃描整個 vault），供第 5、6 步的證據比對共用，再繼續往下執行。
+   - 若有 → 讀取 `profile.json.ongoing_notes_ref` 指向的筆記（`git clone --depth 1` 對應 repo）。依 `ongoing_notes_ref.scope` 的資料夾分類規則，找出與 `current_focus.skill`／需要檢查的 `background_queue` 技能名稱有關鍵字對應的資料夾（例如技能名稱含「Vue」就找 `Vue/` 資料夾）只掃描該資料夾；找不到明確對應資料夾才退回掃描整個 vault。供第 5、6 步的證據比對共用，再繼續往下執行。
 5. **判斷前景技能（`current_focus`）是否完成**（決策 4-4，證據導向、非時間導向）：
    - 比對 `current_focus.assigned_task_ids` 裡每一個任務，是否能在筆記中找到對應的**實際完成證據**（使用者寫的具體成果、程式碼片段、心得描述）——只是「沒被順延」不算證據，一定要在筆記裡找到才算。
    - 若 `assigned_task_ids` 全部都找到證據 → 該技能視為完成：
