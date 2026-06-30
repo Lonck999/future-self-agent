@@ -48,6 +48,9 @@
 - [x] 觸發機制：**Claude Code 排程 cron routine**（`/schedule`），每日、每月各設一個 routine，與第4大題一致。
 - [x] 失敗處理：**自動重試幾次**（注意：因第6大題已用唯一 ID 比對更新事件，重試時不會重複建立行事曆事件，可降低重試的副作用風險；仍需記錄失敗日誌，多次重試仍失敗則通知使用者）。
 - [x] 中斷/暫停：**要支援**，`plan.json` 加 `status: active/paused` 欄位，排程執行前先檢查狀態，paused 時跳過該次執行，cron routine 本身不取消，方便之後恢復。
+- [x] **已知限制（2026-06-30）：cron 排程的 session 目前無法 git push 回 `future-self-agent` repo**。試過三種方式（prompt 內嵌 PAT、不給憑證讓 session 自行尋找、單純 `git clone`/`git push` 依賴環境內建 proxy）皆失敗或被安全機制擋下（內嵌 PAT 被當成憑證外洩風險擋掉；不給憑證時 session 會自行掃描檔案系統找憑證，被當成「憑證探索」行為擋掉）。`future-self-agent` repo 本身是**公開**的，所以讀取（clone 讀 `plan.json`／`ROUTINES.md`）完全不需要憑證、不受影響，只有「寫回」這一步卡住。
+  - **暫行折衷方案**：cron 排程改為**唯讀模式**——只負責讀取 repo 目前狀態 + 寫入 Google Calendar 事件（Calendar 走獨立的 MCP 授權，不受影響），**不嘗試 commit/push**。連帶的影響：`current_focus`／`background_queue` 的證據導向換軌判斷無法由 cron 自動完成（因為需要寫回 `plan.json`），改成 routine 觀察到「目前聚焦技能可能已經練得差不多」時，在 `PushNotification` 裡提醒使用者「可以跟 Claude 說一聲」，由使用者在互動對話中觸發 Claude 讀筆記判斷、寫回 repo、commit + push。
+  - 之後若使用者在 CCR 環境設定找到真正可用的 GitHub 授權方式（例如官方 GitHub App 連接，而非 prompt 內嵌憑證），可以把 cron 排程改回完整自動寫回模式。
 
 ## 8. 互動與通知體驗
 - [x] 查看介面：**Google Calendar（每日任務）+ 月度推送通知（摘要報告）**，不額外打造儀表板網站。
