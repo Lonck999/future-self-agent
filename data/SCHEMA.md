@@ -29,7 +29,7 @@
 
 - `status`：`active` | `paused` | `inactive`（尚未開始）。排程執行前需檢查此欄位，非 `active` 則跳過當次執行。
 - `cycle`：本期規劃的起訖日與長度（預設 3 個月一期）。`note` 說明 cycle 是週期性檢視點，不是達成目標的截止日。
-- `priority_skills`：本期排序後要學習的技能（取自 `profile.json.skill_gaps`，依 `priority_rank` 排序，雙軌交替）。
+- `priority_skills`：本期排序後要學習的技能（取自 `profile.json.skill_gaps`，依 `priority_rank` 排序，區塊式單軌）。
 - `current_focus`：**前景（foreground）**——目前正在「初次學習新概念」的單一技能，同一時間只會有一項。欄位：
   - `skill` / `track`：目前聚焦的技能名稱與所屬主線
   - `started_date`：開始聚焦此技能的日期
