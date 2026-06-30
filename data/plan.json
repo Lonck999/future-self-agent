@@ -5,7 +5,8 @@
   "cycle": {
     "start_date": "2026-06-23",
     "end_date": "2026-12-23",
-    "length_months": 6
+    "length_months": 6,
+    "note": "本期是週期性檢視/調整點，不是達成 success_criteria 的截止日。技能切換以證據導向判斷（見 current_focus），不受 cycle 時長限制，未完成的深化內容順延到下一期。"
   },
   "priority_skills": [
     "Rust 基礎語法（變數/函式/控制流/cargo 專案結構）",
@@ -13,24 +14,32 @@
     "Rust 所有權/借用機制",
     "Vue 3 Composition API",
     "Rust 錯誤處理模式",
-    "Async Rust（tokio）",
-    "REST API 設計",
-    "Rust Web 框架（Axum）",
-    "資料庫整合（sqlx）",
     "Pinia 狀態管理",
+    "Async Rust（tokio）",
     "Vue Router",
+    "REST API 設計",
     "TypeScript（搭配 Vue）",
-    "身份驗證與安全性（JWT/Session）",
+    "Rust Web 框架（Axum）",
     "前端元件架構設計模式",
+    "資料庫整合（sqlx）",
     "Nuxt（SSR）",
-    "部署/DevOps（Docker、CI/CD）",
+    "身份驗證與安全性（JWT/Session）",
     "前端測試（Vitest）",
     "Rust 測試",
-    "全端系統架構設計能力",
     "建構工具（Vite）",
+    "部署/DevOps（Docker、CI/CD）",
+    "全端系統架構設計能力",
     "Code Review 與技術帶領",
     "開源貢獻實務"
   ],
+  "current_focus": {
+    "skill": "Rust 基礎語法（變數/函式/控制流/cargo 專案結構）",
+    "track": "backend",
+    "started_date": "2026-06-23",
+    "assigned_task_ids": ["2026-06-29-1", "2026-06-29-2"],
+    "status": "in_progress",
+    "note": "技能完成判斷為證據導向：每日規劃執行時需讀取 profile.json.ongoing_notes_ref 指向的筆記，比對 assigned_task_ids 是否都能找到對應完成證據，全部找到才推進到 priority_skills 中下一項技能，否則繼續在本技能出下一步任務，不設時間上限。2026-06-29-3（Vue 基礎語法任務）是改版前已建立的事項，不計入本技能的 assigned_task_ids，亦不影響後續判斷。"
+  },
   "calendar": {
     "calendar_id": "a0f91305d642a598c5a345624eea531d03f2bdf709a8a9adccfd57a3963993cd@group.calendar.google.com",
     "calendar_name": "future-self"

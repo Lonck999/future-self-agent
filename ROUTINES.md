@@ -14,22 +14,28 @@
 ## 每日規劃 Routine（每天固定時間執行一次）
 
 1. 前置檢查（見上）。
-2. 讀取 `data/plan.json`（`priority_skills`、`calendar.calendar_id`）與 `data/progress-log.json`。
+2. 讀取 `data/plan.json`（`priority_skills`、`current_focus`、`calendar.calendar_id`）與 `data/progress-log.json`。
 3. **處理昨天未完成的任務**：檢查 `progress-log.json.entries[]` 中最近一天的任務，找出 `status` 仍是 `pending`（代表沒被標記完成）的任務 → 在今天的任務清單裡建立對應的順延任務：
    - `carried_over_from` = 原始日期
    - `status` = `carried_over`
    - `priority` 比原值提高一級
    - 不重新規劃內容，標題/描述沿用原任務。
-4. **產生新任務**：依 `priority_skills` 排序，挑選尚未被排進近期任務的技能，產出 1-3 個**具體可執行任務**（決策 4-2）：要有明確標題、描述、預估時長（`duration_minutes`），不要寫抽象提醒。
+4. **判斷目前聚焦技能（`current_focus`）是否完成**（決策 4-4，證據導向、非時間導向）：
+   - 讀取 `profile.json.ongoing_notes_ref` 指向的筆記（`git clone --depth 1` 對應 repo，掃描整個 vault）。
+   - 比對 `current_focus.assigned_task_ids` 裡每一個任務，是否能在筆記中找到對應的**實際完成證據**（使用者寫的具體成果、程式碼片段、心得描述）——只是「沒被順延」不算證據，一定要在筆記裡找到才算。
+   - 若 `assigned_task_ids` 全部都找到證據 → 該技能視為完成：把 `current_focus` 推進到 `priority_skills` 中下一個尚未完成的技能（依雙軌交替順序），`assigned_task_ids` 清空、`started_date` 改今天、`status` 改 `in_progress`。
+   - 若還沒找到完整證據（或 `assigned_task_ids` 為空、是第一次規劃這個技能）→ `current_focus` 維持不變，不論已經過了幾天都一樣，沒有時間上限，也不可因為「時間到」就跳到下一項技能。
+5. **產生新任務**：**只圍繞 `current_focus.skill` 這一項技能**出 1-3 個**具體可執行任務**（決策 4-2、4-4），不可同時混搭其他技能（例如同一天不可以又排 Rust 又排 Vue）：要有明確標題、描述、預估時長（`duration_minutes`），不要寫抽象提醒。
    - **難度必須對齊使用者目前真實程度**：對照 `profile.json.current_state.skills` 與該技能過去的任務歷史，任務只能是「目前程度的下一小步」，不能假設使用者已經會更進階的東西。例如使用者連 Rust/Vue 基礎語法都還沒寫過時，任務要從 `cargo new`、印出變數、寫一個函式這種最小步驟開始，不能直接出 async/框架/錯誤處理等進階任務。
-   - 同一技能要按「先掌握語法 → 小練習 → 整合應用」由淺入深排，不可跳級；若某技能標記了 `prerequisite_for`，代表它是其他技能的前置，必須先在該技能上累積足夠任務並標記完成，才能開始排被依賴的技能。
-5. 合併「順延任務」+「新任務」成今天的任務清單。
-6. **寫入 Google Calendar**（決策 6-2、6-3）：
+   - 同一技能要按「先掌握語法 → 小練習 → 整合應用」由淺入深排，不可跳級。
+   - 把今天新產生的任務 `id` 加進 `plan.json.current_focus.assigned_task_ids`。
+6. 合併「順延任務」+「新任務」成今天的任務清單。
+7. **寫入 Google Calendar**（決策 6-2、6-3）：
    - 對每個任務呼叫 `create_event`，建立在 `plan.json.calendar.calendar_id` 對應的日曆（不是主行事曆）。
    - 把回傳的 event ID 存進該任務的 `event_id` 欄位。
    - 若任務是「順延」且舊任務已有 `event_id`，改用 `update_event` 調整時間/標題，不要刪除重建。
-7. 把今天的 `{date, tasks[]}` 寫入 `progress-log.json.entries[]`。
-8. 不主動通知使用者（每日規劃不需要推送，使用者直接看 Google Calendar 即可，決策 8-1）。
+8. 把今天的 `{date, tasks[]}` 寫入 `progress-log.json.entries[]`，並把更新後的 `current_focus` 寫回 `plan.json`。
+9. 不主動通知使用者（每日規劃不需要推送，使用者直接看 Google Calendar 即可，決策 8-1）。
 
 ---
 

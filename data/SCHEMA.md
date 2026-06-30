@@ -20,15 +20,22 @@
   - `importance` (1-5)：對達成目標的關鍵程度
   - `current_level` (0-5)：目前水平
   - `gap_score`：`importance * (5 - current_level)`，分數越高越優先（僅供參考，非最終排序依據）
-  - `priority_rank`：最終學習順位。優先依 `gap_score`，但當技能間有**前置依賴關係**時（例如沒寫過基礎語法就不該排非同步框架），依賴關係優先於分數，基礎/前置技能排到依賴它的技能之前
+  - `priority_rank`：最終學習順位。優先依 `gap_score`，但當技能間有**前置依賴關係**時（例如沒寫過基礎語法就不該排非同步框架），依賴關係優先於分數，基礎/前置技能排到依賴它的技能之前；同時依**雙軌交替**規則排列（後端/前端技能交錯出現，見 `track`），避免單軌學完才碰另一邊
   - `prerequisite_for`（可選）：此技能是哪些技能的前置條件，標記出依賴鏈，避免任務生成時跳級
+  - `track`：技能所屬主線，`backend`（Rust）｜`frontend`（Vue）｜`integration`（需雙軌都有基礎才適合進行的整合型技能，排在最後階段）
 
 ## plan.json
 目前生效的規劃週期與行事曆對應資訊，由初始訪談 Skill 建立，每日/每月排程 Agent 讀寫。
 
 - `status`：`active` | `paused` | `inactive`（尚未開始）。排程執行前需檢查此欄位，非 `active` 則跳過當次執行。
-- `cycle`：本期規劃的起訖日與長度（預設 3 個月一期）。
-- `priority_skills`：本期排序後要學習的技能（取自 `profile.json.skill_gaps`，依 `priority_rank` 排序）。
+- `cycle`：本期規劃的起訖日與長度（預設 3 個月一期）。`note` 說明 cycle 是週期性檢視點，不是達成目標的截止日。
+- `priority_skills`：本期排序後要學習的技能（取自 `profile.json.skill_gaps`，依 `priority_rank` 排序，雙軌交替）。
+- `current_focus`：目前正在聚焦學習的單一技能，每日規劃只圍繞這項技能出任務（不混搭其他技能）。欄位：
+  - `skill` / `track`：目前聚焦的技能名稱與所屬主線
+  - `started_date`：開始聚焦此技能的日期
+  - `assigned_task_ids`：已經為此技能出過的任務 ID 清單（對應 `progress-log.json` 的任務 `id`），每日規劃需讀使用者筆記比對這些任務是否都有完成證據
+  - `status`：`in_progress`（進行中）｜`completed`（已找到完整證據，待下次規劃推進到下一項技能）
+  - 證據導向判斷：全部 `assigned_task_ids` 都在筆記中找到完成證據，才推進到 `priority_skills` 中下一項技能並重置 `assigned_task_ids`；否則維持原技能繼續出下一步任務，不設時間上限
 - `calendar`：對應的 Google Calendar 資訊（獨立的「未來自己」日曆，不寫入主行事曆）。
 - `history[]`：每期/每月的回顧紀錄，欄位：
   - `month`：對應月份（YYYY-MM）
