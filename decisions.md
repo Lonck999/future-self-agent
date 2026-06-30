@@ -23,8 +23,14 @@
 - [x] 觸發方式：**完全自動排程**（`/schedule` 設定每日 cron routine，固定時間自動執行）。
 - [x] 待辦粒度：**具體可執行任務**（例如「閱讀 XX 章節，1 小時」），確保行事曆事件有實際指引價值。
 - [x] 未完成處理：**自動順延到下一天並提高優先度**，連續未完成則留待每月檢查機制提醒，不做每日重新規劃。
-- [x] 技能聚焦規則：**同一時間只專注一項技能**，不同時混搭多技能（例如不會同一天又排 Rust 又排 Vue）。22 項技能分**雙軌交替**推進——後端 Rust 線、前端 Vue 線各自照 `priority_rank` 排序，兩線交替進行（Rust 基礎 → Vue 基礎 → Rust 所有權 → Vue Composition API → …），確保不會半年都不碰其中一邊；整合型技能（DevOps、全端架構、Code Review、開源貢獻）排在雙軌都有一定基礎後，作為最後階段。
-- [x] 技能完成判斷：**證據導向，非時間導向**——不設固定天數/固定任務數上限。每日規劃執行時需讀取 `profile.json.ongoing_notes_ref` 指向的使用者筆記，比對 `plan.json.current_focus.assigned_task_ids` 內每個任務是否能在筆記中找到對應的實際完成證據（具體成果、程式碼、心得描述，而非只是「沒被順延」）。全部找到證據才視為該技能完成、推進到 `priority_skills` 中下一項技能；沒找到完整證據就維持原技能、繼續出下一個小步驟任務，不可因為時間到就強制換軌。
+- [x] 技能聚焦規則：**前景單一聚焦＋背景持續深化的雙層結構**（區塊式單軌，非雙軌交替）：
+  - **前景（`current_focus`）**：同一時間只「初次學習新概念」一項技能。22 項技能照 `priority_rank` **區塊式**排列——整條前端 Vue 技能線（9項）全部學完才開始整條後端 Rust 技能線（9項），整合型技能（DevOps、全端架構、Code Review、開源貢獻，4項）排最後。
+  - **背景（`background_queue`）**：技能在前景畢業後不會被晾著，會進入背景持續推進——先進 `project_application` 階段（用實際專案應用/複習深化），證據導向畢業後進 `optimization` 階段（效能/進階優化研究），之後不退出佇列、持續輪替深化。例如：學完 Vue 開始學 Rust 時，Vue 同時用專案持續精進；Rust 也學完、開始學下一項時，Rust 也開始寫專案，Vue 則可能進一步推進到效能優化研究，以此類推、隨時間疊加。
+  - 每日任務 = 前景 1 個（`current_focus`）+ 背景最多 1 個（用 `background_rotation_index` 從 `background_queue` 輪流挑，避免畢業技能越多、每日任務越爆炸）。
+- [x] 技能完成判斷：**證據導向，非時間導向**——不設固定天數/固定任務數上限，前景與背景皆同此原則。每日規劃執行時需讀取 `profile.json.ongoing_notes_ref` 指向的使用者筆記：
+  - 前景：比對 `plan.json.current_focus.assigned_task_ids` 內每個任務是否能在筆記中找到對應的實際完成證據（具體成果、程式碼、心得描述，而非只是「沒被順延」）。全部找到證據才視為該技能完成、移入 `background_queue`（`project_application` 階段）、`current_focus` 推進到下一項技能。
+  - 背景：比對該技能在目前 stage 的 `assigned_task_ids` 是否有對應的實際專案應用證據，找到才從 `project_application` 畢業到 `optimization`。
+  - 沒找到完整證據就維持原狀、繼續出下一個小步驟任務，不可因為時間到就強制換軌或換階段。
 - [x] 目標時程定位：`plan.json.cycle`（6 個月）是**週期性檢視/調整點**，不是「達成大師級」的截止日。本期內未深化完的技能順延到下一期繼續規劃，最終目標以實際達到 `profile.json.target_identity.success_criteria` 為準，不受單一 cycle 時長限制（呼應第2大題「固定週期、每期底檢視調整」）。
 
 ## 5. 每月進度確認流程
